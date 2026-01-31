@@ -9,7 +9,7 @@ import { AuthStore } from '../../state/auth/auth.store';
 @Component({
   selector: 'app-dashboard',
   standalone: true,
-  imports: [CommonModule, RouterLink, MatCardModule, MatIconModule, MatButtonModule],
+  imports: [CommonModule, MatCardModule, MatIconModule, MatButtonModule],
   templateUrl: './dashboard.html',
   styleUrl: './dashboard.css'
 })
