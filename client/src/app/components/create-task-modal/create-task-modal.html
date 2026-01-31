@@ -1,0 +1,111 @@
+<h2 mat-dialog-title>
+  <mat-icon>add_task</mat-icon>
+  Create New Task
+</h2>
+
+<mat-dialog-content>
+  <form>
+    <!-- בחירת פרויקט -->
+    <mat-form-field appearance="outline" class="full-width">
+      <mat-label>Project</mat-label>
+      <mat-select 
+        [(ngModel)]="selectedProjectId" 
+        name="project" 
+        required
+        [disabled]="isProjectLocked()"
+      >
+        @if (projects().length === 0) {
+          <mat-option disabled>No projects available</mat-option>
+        }
+        @for (project of projects(); track project.id) {
+          <mat-option [value]="project.id">
+            {{ project.name }}
+          </mat-option>
+        }
+      </mat-select>
+      @if (isProjectLocked()) {
+        <mat-hint>Project is pre-selected for this task</mat-hint>
+      } @else {
+        <mat-hint>Select the project for this task</mat-hint>
+      }
+    </mat-form-field>
+
+    <!-- כותרת המשימה -->
+    <mat-form-field appearance="outline" class="full-width">
+      <mat-label>Task Title</mat-label>
+      <input 
+        matInput 
+        [(ngModel)]="taskTitle" 
+        name="taskTitle"
+        placeholder="Enter task title"
+        required
+        maxlength="200"
+      />
+      <mat-hint>{{ taskTitle.length }}/200</mat-hint>
+    </mat-form-field>
+
+    <!-- תיאור -->
+    <mat-form-field appearance="outline" class="full-width">
+      <mat-label>Description (Optional)</mat-label>
+      <textarea 
+        matInput 
+        [(ngModel)]="taskDescription" 
+        name="taskDescription"
+        placeholder="Enter task description"
+        rows="4"
+        maxlength="1000"
+      ></textarea>
+      <mat-hint>{{ taskDescription.length }}/1000</mat-hint>
+    </mat-form-field>
+
+    <!-- סטטוס -->
+    <mat-form-field appearance="outline" class="full-width">
+      <mat-label>Status</mat-label>
+      <mat-select [(ngModel)]="selectedStatus" name="status">
+        @for (status of statuses; track status.value) {
+          <mat-option [value]="status.value">
+            {{ status.label }}
+          </mat-option>
+        }
+      </mat-select>
+    </mat-form-field>
+
+    <!-- עדיפות -->
+    <mat-form-field appearance="outline" class="full-width">
+      <mat-label>Priority</mat-label>
+      <mat-select [(ngModel)]="selectedPriority" name="priority">
+        @for (priority of priorities; track priority.value) {
+          <mat-option [value]="priority.value">
+            {{ priority.label }}
+          </mat-option>
+        }
+      </mat-select>
+    </mat-form-field>
+
+    <!-- תאריך יעד -->
+    <mat-form-field appearance="outline" class="full-width">
+      <mat-label>Due Date (Optional)</mat-label>
+      <input 
+        matInput 
+        [matDatepicker]="picker"
+        [(ngModel)]="selectedDueDate"
+        name="dueDate"
+        placeholder="Select due date"
+      />
+      <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-datepicker #picker></mat-datepicker>
+    </mat-form-field>
+  </form>
+</mat-dialog-content>
+
+<mat-dialog-actions align="end">
+  <button mat-button (click)="onCancel()">Cancel</button>
+  <button 
+    mat-raised-button 
+    color="primary" 
+    (click)="onSubmit()"
+    [disabled]="!isValid()"
+  >
+    Create Task
+  </button>
+</mat-dialog-actions>

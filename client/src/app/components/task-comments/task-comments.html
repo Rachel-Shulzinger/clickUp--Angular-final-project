@@ -1,0 +1,71 @@
+<h2 mat-dialog-title>
+  <mat-icon>comment</mat-icon>
+  Comments - {{ data.taskTitle }}
+</h2>
+
+<mat-dialog-content>
+  <div class="comments-container">
+    @if (loading()) {
+      <div class="loading-state">
+        <mat-icon>hourglass_empty</mat-icon>
+        <p>Loading comments...</p>
+      </div>
+    } @else if (comments().length === 0) {
+      <div class="empty-state">
+        <mat-icon>chat_bubble_outline</mat-icon>
+        <p>No comments yet</p>
+        <p class="hint">Be the first to comment!</p>
+      </div>
+    } @else {
+      <div class="comments-list">
+        @for (comment of comments(); track $index) {
+          <div class="comment-item">
+            <div class="comment-header">
+              <div class="author-info">
+                <mat-icon class="author-icon">account_circle</mat-icon>
+                <span class="author-name">{{ comment.author_name || 'Unknown' }}</span>
+              </div>
+              <span class="comment-date">{{ comment.created_at | date: 'dd/MM/yyyy HH:mm' }}</span>
+            </div>
+            <div class="comment-body">
+              {{ comment.body }}
+            </div>
+          </div>
+        }
+      </div>
+    }
+  </div>
+
+  <div class="add-comment-section">
+    <mat-form-field appearance="outline" class="full-width">
+      <mat-label>Add a comment</mat-label>
+      <textarea 
+        matInput 
+        [(ngModel)]="newCommentText"
+        placeholder="Write your comment here..."
+        rows="3"
+        maxlength="500"
+        (keydown.control.enter)="onAddComment()"
+      ></textarea>
+      <mat-hint>{{ newCommentText.length }}/500 · Press Ctrl+Enter to submit</mat-hint>
+    </mat-form-field>
+    
+    <button 
+      mat-raised-button 
+      color="primary" 
+      (click)="onAddComment()"
+      [disabled]="!isCommentValid() || loading()"
+      class="add-comment-btn"
+    >
+      <mat-icon>send</mat-icon>
+      Add Comment
+    </button>
+  </div>
+</mat-dialog-content>
+
+<mat-dialog-actions align="end">
+  <button mat-button (click)="onClose()">
+    <mat-icon>close</mat-icon>
+    Close
+  </button>
+</mat-dialog-actions>

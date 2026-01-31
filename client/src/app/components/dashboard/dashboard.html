@@ -1,0 +1,39 @@
+<div class="dashboard-wrapper">
+  <div class="header">
+    <div class="title">Welcome back, {{ authStore.user()?.name || 'User' }}</div>
+    <div class="subtitle">Your workspace at a glance — tasks, projects and teams</div>
+  </div>
+
+  <div class="cards">
+    <mat-card class="dash-card" (click)="navigate('/task')">
+      <mat-card-header>
+        <mat-icon>task_alt</mat-icon>
+      </mat-card-header>
+      <mat-card-content>
+        <h3>My Tasks</h3>
+        <p>Open tasks assigned to you and quick filters.</p>
+      </mat-card-content>
+    </mat-card>
+
+    <mat-card class="dash-card" (click)="navigate('/projects')">
+      <mat-card-header>
+        <mat-icon>folder_open</mat-icon>
+      </mat-card-header>
+      <mat-card-content>
+        <h3>Projects</h3>
+        <p>Active projects and milestones.</p>
+      </mat-card-content>
+    </mat-card>
+
+    <mat-card class="dash-card" (click)="navigate('/teams')">
+      <mat-card-header>
+        <mat-icon>groups</mat-icon>
+      </mat-card-header>
+      <mat-card-content>
+        <h3>Teams</h3>
+        <p>Team rosters and recent activity.</p>
+      </mat-card-content>
+    </mat-card>
+  </div>
+
+</div>

@@ -1,0 +1,101 @@
+<div class="projects-page">
+  <div class="page-header">
+    <div class="header-content">
+      <div class="title-section">
+        @if (currentTeamId) {
+          <button mat-icon-button (click)="showAllProjects()" class="back-btn" matTooltip="Back to all projects">
+            <mat-icon>arrow_back</mat-icon>
+          </button>
+        }
+        <h1 class="page-title">
+          <mat-icon class="title-icon">folder</mat-icon>
+          {{ getPageTitle() }}
+          @if (!loading()) {
+            <span class="project-count">({{ projects().length }})</span>
+          }
+        </h1>
+      </div>
+      <button mat-raised-button color="primary" (click)="onAddProject()" class="add-project-btn">
+        <mat-icon>add</mat-icon>
+        Add Project
+      </button>
+    </div>
+  </div>
+
+  <div class="projects-container">
+    @if (loading()) {
+      <div class="loading-state">
+        <mat-icon class="loading-icon">hourglass_empty</mat-icon>
+        <h2>Loading projects...</h2>
+      </div>
+    } @else if (projects().length === 0) {
+      <div class="empty-state">
+        <mat-icon class="empty-icon">folder_open</mat-icon>
+        @if (currentTeamId) {
+          <h2>No projects in this team yet</h2>
+          <p>Create the first project for {{ currentTeamName }}</p>
+        } @else {
+          <h2>No projects yet</h2>
+          <p>Create your first project to get started</p>
+        }
+        <button mat-raised-button color="primary" (click)="onAddProject()">
+          <mat-icon>add</mat-icon>
+          Create Your First Project
+        </button>
+      </div>
+    } @else {
+      <div class="projects-grid">
+        @for (project of projects(); track project.id) {
+          <mat-card class="project-card" (click)="onProjectClick(project)">
+            <mat-card-header>
+              <div class="project-avatar" mat-card-avatar>
+                <mat-icon>folder</mat-icon>
+              </div>
+              <mat-card-title>
+                {{ project.name }}
+                <span class="task-badge">{{ getTaskCount(project.id) }}</span>
+              </mat-card-title>
+              <mat-card-subtitle>
+                {{ project.description || 'No description' }}
+              </mat-card-subtitle>
+            </mat-card-header>
+
+            <mat-card-content>
+              <div class="project-info">
+                <div class="info-item">
+                  <mat-icon>assignment</mat-icon>
+                  <span>{{ getTaskCount(project.id) }} tasks</span>
+                </div>
+                <div class="info-item">
+                  <mat-icon>event</mat-icon>
+                  @if (project.createdAt) {
+                    <span>Created: {{ project.createdAt | date: 'dd/MM/yyyy' }}</span>
+                  } @else {
+                    <span>No date</span>
+                  }
+                </div>
+                @if (project.updatedAt && project.updatedAt !== project.createdAt) {
+                  <div class="info-item">
+                    <mat-icon>update</mat-icon>
+                    <span>Updated: {{ project.updatedAt | date: 'dd/MM/yyyy' }}</span>
+                  </div>
+                }
+              </div>
+            </mat-card-content>
+
+            <mat-card-actions>
+              <button mat-button color="primary" (click)="onProjectClick(project); $event.stopPropagation()">
+                <mat-icon>visibility</mat-icon>
+                View Details
+              </button>
+              <button mat-button (click)="onViewTasks(project)">
+                <mat-icon>task</mat-icon>
+                Tasks
+              </button>
+            </mat-card-actions>
+          </mat-card>
+        }
+      </div>
+    }
+  </div>
+</div>

@@ -1,0 +1,109 @@
+/* ClickUp Home - Professional Design */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+
+:host {
+  display: block;
+  min-height: 100vh;
+  font-family: 'Inter', sans-serif;
+  --primary: #2563eb;
+  --primary-dark: #1e40af;
+  --secondary: #0f172a;
+  --accent: #f59e0b;
+  --text-main: #020617;
+  --text-muted: #64748b;
+  --bg-surface: #ffffff;
+}
+
+.home-wrapper {
+  background-color: #fafafa;
+  min-height: 100vh;
+  color: var(--text-main);
+  overflow-x: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Toolbar */
+.home-toolbar {
+  background: rgba(255, 255, 255, 0.9) !important;
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(0,0,0,0.05);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  height: 72px !important;
+  padding: 0 24px;
+}
+
+.toolbar-content {
+  max-width: 1280px;
+  width: 100%;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.logo-section {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+}
+
+.logo-icon {
+  color: var(--primary);
+  font-size: 28px;
+  width: 28px;
+  height: 28px;
+}
+
+.logo-text {
+  font-weight: 800;
+  font-size: 22px;
+  letter-spacing: -0.5px;
+  color: var(--secondary);
+}
+
+/* Hero Section */
+.hero-section {
+  padding: 100px 24px 60px;
+  background: radial-gradient(circle at 50% 0%, rgba(37, 99, 235, 0.08) 0%, rgba(255, 255, 255, 0) 50%);
+}
+
+.hero-container {
+  max-width: 1280px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 60px;
+  align-items: center;
+}
+
+.hero-title {
+  font-size: 64px;
+  font-weight: 800;
+  line-height: 1.1;
+  letter-spacing: -2px;
+  margin-bottom: 24px;
+  color: var(--secondary);
+}
+
+.highlight-text {
+  background: linear-gradient(135deg, #2563eb 0%, #a855f7 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Responsive */
+@media (max-width: 960px) {
+  .hero-container {
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+  
+  .hero-title {
+    font-size: 42px;
+  }
+}

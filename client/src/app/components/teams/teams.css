@@ -1,0 +1,256 @@
+/* Modern Teams Page Design - Hi-Tech Business Style */
+
+.teams-page {
+  padding: 32px;
+  min-height: 100vh;
+  background: transparent;
+}
+
+.page-header {
+  background: white;
+  padding: 32px;
+  margin-bottom: 32px;
+  border-radius: 20px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
+  border: 1px solid #e5e7eb;
+  transition: all 0.3s ease;
+}
+
+.page-header:hover {
+  box-shadow: 0 6px 30px rgba(0, 0, 0, 0.08);
+}
+
+.header-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.page-title {
+  margin: 0;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  font-size: 32px;
+  font-weight: 700;
+  color: #1e293b;
+  letter-spacing: -0.5px;
+}
+
+.title-icon {
+  font-size: 36px;
+  width: 36px;
+  height: 36px;
+  color: #2563eb;
+}
+
+.add-team-btn {
+  height: 48px;
+  padding: 0 28px !important;
+  font-size: 16px !important;
+  font-weight: 600 !important;
+  border-radius: 12px !important;
+  background: #2563eb !important;
+  box-shadow: 0 4px 16px rgba(37, 99, 235, 0.25) !important;
+  transition: all 0.3s ease !important;
+}
+
+.add-team-btn:hover {
+  background: #1d4ed8 !important;
+  box-shadow: 0 6px 24px rgba(37, 99, 235, 0.35) !important;
+  transform: translateY(-2px);
+}
+
+/* Teams Container */
+.teams-container {
+  min-height: 400px;
+}
+
+.teams-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+  gap: 28px;
+}
+
+/* Team Card */
+.team-card {
+  border-radius: 18px !important;
+  border: 1px solid #e5e7eb !important;
+  background: white;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+}
+
+.team-card:hover {
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.12) !important;
+  transform: translateY(-6px);
+  border-color: #cbd5e1 !important;
+}
+
+.team-card .mat-mdc-card-header {
+  padding: 24px;
+  background-color: white;
+}
+
+.team-avatar {
+  width: 56px;
+  height: 56px;
+  border-radius: 16px;
+  background: #eff6ff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 12px rgba(37, 99, 235, 0.1);
+}
+
+.team-avatar mat-icon {
+  color: #2563eb;
+  font-size: 32px;
+  width: 32px;
+  height: 32px;
+}
+
+.team-card .mat-mdc-card-title {
+  font-size: 20px;
+  font-weight: 700;
+  color: #1e293b;
+  margin-bottom: 4px;
+}
+
+.team-card .mat-mdc-card-subtitle {
+  color: #64748b;
+  font-size: 14px;
+}
+
+.team-menu-btn {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  color: #94a3b8;
+}
+
+.team-description {
+  color: #475569;
+  font-size: 15px;
+  margin: 0 0 20px 0;
+  line-height: 1.6;
+}
+
+.team-info {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin: 20px 0;
+  padding: 16px;
+  background-color: #f8fafc;
+  border-radius: 12px;
+  border: 1px solid #f1f5f9;
+}
+
+.team-info .info-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 14px;
+  color: #475569;
+  font-weight: 500;
+}
+
+.team-info .info-item mat-icon {
+  font-size: 20px;
+  width: 20px;
+  height: 20px;
+  color: #94a3b8;
+}
+
+/* Team Members */
+.team-members {
+  margin-top: 20px;
+}
+
+.members-avatars {
+  display: flex;
+  align-items: center;
+  padding-left: 8px;
+}
+
+.member-avatar {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: #2563eb;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 600;
+  font-size: 13px;
+  border: 2px solid white;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  margin-left: -8px;
+}
+
+.more-members {
+  background: #e2e8f0;
+  color: #475569;
+}
+
+.team-card .mat-mdc-card-actions {
+  padding: 16px 24px;
+  border-top: 1px solid #f1f5f9;
+  display: flex;
+  gap: 8px;
+}
+
+.team-card button {
+  font-weight: 600;
+}
+
+/* Empty State */
+.empty-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 100px 20px;
+  text-align: center;
+  background: white;
+  border-radius: 20px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
+  border: 1px solid #e5e7eb;
+}
+
+.empty-icon {
+  font-size: 120px;
+  width: 120px;
+  height: 120px;
+  color: #cbd5e1;
+  margin-bottom: 32px;
+}
+
+.empty-state h2 {
+  margin: 0 0 16px 0;
+  color: #1e293b;
+  font-size: 28px;
+  font-weight: 700;
+}
+
+.empty-state p {
+  margin: 0 0 36px 0;
+  color: #64748b;
+  font-size: 17px;
+  max-width: 480px;
+  line-height: 1.6;
+}
+
+
+/* Menu Item Danger */
+.danger-menu-item {
+  color: #f44336;
+}
+
+.danger-menu-item mat-icon {
+  color: #f44336;
+}

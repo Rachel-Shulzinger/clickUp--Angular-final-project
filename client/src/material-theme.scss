@@ -1,0 +1,130 @@
+
+// ClickUp - Modern Hi-Tech Business Theme
+@use '@angular/material' as mat;
+
+// Define innovative primary palette (Indigo-Purple)
+$clickup-primary: (
+  0: #000000,
+  10: #1a0033,
+  20: #2d1b4e,
+  25: #38265d,
+  30: #43316d,
+  35: #4f3c7d,
+  40: #5a478d,
+  50: #7559a8,
+  60: #9172c4,
+  70: #ad8be1,
+  80: #caa5ff,
+  90: #e8d5ff,
+  95: #f5ebff,
+  98: #fcf8ff,
+  99: #fffbff,
+  100: #ffffff,
+  contrast: (
+    0: #ffffff,
+    10: #ffffff,
+    20: #ffffff,
+    30: #ffffff,
+    40: #ffffff,
+    50: #ffffff,
+    60: #000000,
+    70: #000000,
+    80: #000000,
+    90: #000000,
+    95: #000000,
+    98: #000000,
+    99: #000000,
+    100: #000000,
+  )
+);
+
+// Define accent palette (Pink-Magenta)
+$clickup-accent: (
+  0: #000000,
+  10: #3d001e,
+  20: #5d1134,
+  25: #6d1c3f,
+  30: #7e264a,
+  35: #8f3156,
+  40: #a13c62,
+  50: #c4527a,
+  60: #e76a94,
+  70: #ff84af,
+  80: #ffb0c9,
+  90: #ffd9e3,
+  95: #ffecf1,
+  98: #fff8f9,
+  99: #fffbff,
+  100: #ffffff,
+  contrast: (
+    0: #ffffff,
+    10: #ffffff,
+    20: #ffffff,
+    30: #ffffff,
+    40: #ffffff,
+    50: #ffffff,
+    60: #000000,
+    70: #000000,
+    80: #000000,
+    90: #000000,
+    95: #000000,
+    98: #000000,
+    99: #000000,
+    100: #000000,
+  )
+);
+
+html {
+  height: 100%;
+  @include mat.theme((
+    color: (
+      primary: $clickup-primary,
+      accent: $clickup-accent,
+      tertiary: mat.$cyan-palette,
+      warn: mat.$red-palette,
+    ),
+    typography: Roboto,
+    density: 0,
+  ));
+}
+
+body {
+  color-scheme: light;
+  background-color: #fafafa;
+  color: #212121;
+  font-family: 'Roboto', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  font-size: 14px;
+  line-height: 1.6;
+  margin: 0;
+  height: 100%;
+}
+
+// ClickUp Color Variables - Hi-Tech Business Colors
+:root {
+  --clickup-primary: #3f51b5;
+  --clickup-accent: #ff4081;
+  --clickup-warn: #f44336;
+  --clickup-success: #4caf50;
+  --clickup-info: #00bcd4;
+  --clickup-warning: #ff9800;
+  
+  --clickup-gradient-1: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  --clickup-gradient-2: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+  --clickup-gradient-3: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+  --clickup-gradient-4: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%);
+  --clickup-gradient-5: linear-gradient(135deg, #fa709a 0%, #fee140 100%);
+  
+  --clickup-bg-main: #fafafa;
+  --clickup-bg-white: #ffffff;
+  --clickup-bg-hover: #f5f5f5;
+  --clickup-text-primary: #212121;
+  --clickup-text-secondary: #757575;
+  --clickup-text-tertiary: #9e9e9e;
+  --clickup-border: rgba(0, 0, 0, 0.12);
+  --clickup-divider: rgba(0, 0, 0, 0.12);
+  
+  --clickup-shadow-sm: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+  --clickup-shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  --clickup-shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  --clickup-shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+}

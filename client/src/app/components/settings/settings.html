@@ -1,0 +1,230 @@
+<div class="settings-container">
+  <div class="settings-header">
+    <h1>
+      <mat-icon class="header-icon">settings</mat-icon>
+      Settings
+    </h1>
+    <p class="subtitle">Customize your workspace experience</p>
+  </div>
+
+  <!-- User Profile Section -->
+  <mat-card class="settings-card">
+    <mat-card-header>
+      <mat-icon mat-card-avatar class="section-icon">account_circle</mat-icon>
+      <mat-card-title>User Profile</mat-card-title>
+      <mat-card-subtitle>Your account information</mat-card-subtitle>
+    </mat-card-header>
+    <mat-card-content>
+      <div class="profile-info">
+        <div class="info-item">
+          <mat-icon>person</mat-icon>
+          <div>
+            <div class="label">Name</div>
+            <div class="value">{{ authStore.user()?.name || 'User' }}</div>
+          </div>
+        </div>
+        <div class="info-item">
+          <mat-icon>email</mat-icon>
+          <div>
+            <div class="label">Email</div>
+            <div class="value">{{ authStore.user()?.email || 'user@example.com' }}</div>
+          </div>
+        </div>
+        <div class="info-item">
+          <mat-icon>access_time</mat-icon>
+          <div>
+            <div class="label">Member Since</div>
+            <div class="value">
+              <mat-chip class="member-chip">{{ authStore.user()?.createdAt ? (authStore.user()?.createdAt | date: 'MMM yyyy') : 'Recently' }}</mat-chip>
+            </div>
+          </div>
+        </div>
+      </div>
+    </mat-card-content>
+  </mat-card>
+
+  <!-- Appearance Settings -->
+  <mat-card class="settings-card">
+    <mat-card-header>
+      <mat-icon mat-card-avatar class="section-icon">palette</mat-icon>
+      <mat-card-title>Appearance</mat-card-title>
+      <mat-card-subtitle>Customize how the app looks</mat-card-subtitle>
+    </mat-card-header>
+    <mat-card-content>
+      <div class="settings-group">
+        <!-- Dark Mode -->
+        <div class="setting-item">
+          <div class="setting-info">
+            <mat-icon>dark_mode</mat-icon>
+            <div>
+              <div class="setting-title">Dark Mode</div>
+              <div class="setting-description">Use dark theme for better night viewing</div>
+            </div>
+          </div>
+          <mat-slide-toggle 
+            [(ngModel)]="darkMode"
+            (change)="onDarkModeChange($event.checked)"
+            color="primary">
+          </mat-slide-toggle>
+        </div>
+
+        <mat-divider></mat-divider>
+
+        <!-- Compact View -->
+        <div class="setting-item">
+          <div class="setting-info">
+            <mat-icon>view_compact</mat-icon>
+            <div>
+              <div class="setting-title">Compact View</div>
+              <div class="setting-description">Show more content with less spacing</div>
+            </div>
+          </div>
+          <mat-slide-toggle 
+            [(ngModel)]="compactView"
+            (change)="onCompactViewChange($event.checked)"
+            color="primary">
+          </mat-slide-toggle>
+        </div>
+
+        <mat-divider></mat-divider>
+
+        <!-- Theme Color -->
+        <div class="setting-item">
+          <div class="setting-info">
+            <mat-icon>color_lens</mat-icon>
+            <div>
+              <div class="setting-title">Theme Color</div>
+              <div class="setting-description">Choose your favorite color scheme</div>
+            </div>
+          </div>
+          <mat-form-field appearance="outline" class="theme-select">
+            <mat-select 
+              [(ngModel)]="selectedTheme"
+              (selectionChange)="onThemeChange($event.value)">
+              @for (theme of themes; track theme.value) {
+                <mat-option [value]="theme.value">
+                  <span class="theme-option">
+                    <span class="theme-color" [style.background-color]="theme.color"></span>
+                    {{ theme.label }}
+                  </span>
+                </mat-option>
+              }
+            </mat-select>
+          </mat-form-field>
+        </div>
+      </div>
+    </mat-card-content>
+  </mat-card>
+
+  <!-- Preferences -->
+  <mat-card class="settings-card">
+    <mat-card-header>
+      <mat-icon mat-card-avatar class="section-icon">tune</mat-icon>
+      <mat-card-title>Preferences</mat-card-title>
+      <mat-card-subtitle>Control your experience</mat-card-subtitle>
+    </mat-card-header>
+    <mat-card-content>
+      <div class="settings-group">
+        <!-- Animations -->
+        <div class="setting-item">
+          <div class="setting-info">
+            <mat-icon>animation</mat-icon>
+            <div>
+              <div class="setting-title">Animations</div>
+              <div class="setting-description">Enable smooth transitions and effects</div>
+            </div>
+          </div>
+          <mat-slide-toggle 
+            [(ngModel)]="animations"
+            (change)="onAnimationsChange($event.checked)"
+            color="primary">
+          </mat-slide-toggle>
+        </div>
+
+        <mat-divider></mat-divider>
+
+        <!-- Notifications -->
+        <div class="setting-item">
+          <div class="setting-info">
+            <mat-icon>notifications</mat-icon>
+            <div>
+              <div class="setting-title">Notifications</div>
+              <div class="setting-description">Receive updates about tasks and comments</div>
+            </div>
+          </div>
+          <mat-slide-toggle 
+            [(ngModel)]="notifications"
+            (change)="onNotificationsChange($event.checked)"
+            color="primary">
+          </mat-slide-toggle>
+        </div>
+
+        <mat-divider></mat-divider>
+
+        <!-- Language -->
+        <div class="setting-item">
+          <div class="setting-info">
+            <mat-icon>language</mat-icon>
+            <div>
+              <div class="setting-title">Language</div>
+              <div class="setting-description">Select your preferred language</div>
+            </div>
+          </div>
+          <mat-form-field appearance="outline" class="language-select">
+            <mat-select 
+              [(ngModel)]="selectedLanguage"
+              (selectionChange)="onLanguageChange($event.value)">
+              @for (lang of languages; track lang.value) {
+                <mat-option [value]="lang.value">
+                  <span class="language-option">
+                    <span class="flag">{{ lang.flag }}</span>
+                    {{ lang.label }}
+                  </span>
+                </mat-option>
+              }
+            </mat-select>
+          </mat-form-field>
+        </div>
+      </div>
+    </mat-card-content>
+  </mat-card>
+
+  <!-- Data & Privacy -->
+  <mat-card class="settings-card">
+    <mat-card-header>
+      <mat-icon mat-card-avatar class="section-icon">storage</mat-icon>
+      <mat-card-title>Data & Privacy</mat-card-title>
+      <mat-card-subtitle>Manage your data</mat-card-subtitle>
+    </mat-card-header>
+    <mat-card-content>
+      <div class="action-buttons">
+        <button mat-raised-button color="primary" (click)="exportData()">
+          <mat-icon>download</mat-icon>
+          Export Data
+        </button>
+        <button mat-raised-button (click)="clearCache()">
+          <mat-icon>delete_sweep</mat-icon>
+          Clear Cache
+        </button>
+        <button mat-raised-button color="warn" (click)="resetSettings()">
+          <mat-icon>restore</mat-icon>
+          Reset Settings
+        </button>
+      </div>
+    </mat-card-content>
+  </mat-card>
+
+  <!-- App Info -->
+  <mat-card class="settings-card info-card">
+    <mat-card-content>
+      <div class="app-info">
+        <mat-icon class="app-icon">info</mat-icon>
+        <div>
+          <div class="app-name">Wolf Tasks</div>
+          <div class="app-version">Version 1.0.0</div>
+          <div class="app-description">Team Task Management System</div>
+        </div>
+      </div>
+    </mat-card-content>
+  </mat-card>
+</div>

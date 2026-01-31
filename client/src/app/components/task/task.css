@@ -1,0 +1,275 @@
+/* Modern Task Page Design - Hi-Tech Business Style */
+
+.task-container {
+  padding: 32px;
+  min-height: 100vh;
+  background: transparent;
+}
+
+.header {
+  background: white;
+  padding: 32px;
+  margin-bottom: 32px;
+  border-radius: 20px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
+  border: 1px solid #e5e7eb;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: all 0.3s ease;
+}
+
+.header:hover {
+  box-shadow: 0 6px 30px rgba(0, 0, 0, 0.08);
+}
+
+.title-section {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.back-btn {
+  color: #2563eb;
+  transition: all 0.2s ease;
+  background: #eff6ff;
+  width: 44px;
+  height: 44px;
+}
+
+.back-btn:hover {
+  background: #dbeafe;
+  transform: translateX(-3px);
+}
+
+.header h1 {
+  margin: 0;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  font-size: 32px;
+  font-weight: 700;
+  color: #1e293b;
+  letter-spacing: -0.5px;
+}
+
+.task-count {
+  font-size: 22px;
+  color: #64748b;
+  font-weight: 600;
+  padding: 4px 14px;
+  background: linear-gradient(135deg, #eff6ff 0%, #f3e8ff 100%);
+  border-radius: 20px;
+}
+
+.header button[color="primary"] {
+  height: 48px;
+  padding: 0 28px !important;
+  font-size: 16px !important;
+  font-weight: 600 !important;
+  border-radius: 12px !important;
+  background: linear-gradient(135deg, #2563eb 0%, #7c3aed 100%) !important;
+  box-shadow: 0 4px 16px rgba(37, 99, 235, 0.25) !important;
+  transition: all 0.3s ease !important;
+}
+
+.header button[color="primary"]:hover {
+  box-shadow: 0 6px 24px rgba(37, 99, 235, 0.35) !important;
+  transform: translateY(-2px);
+}
+
+.tasks-list {
+  margin-top: 20px;
+}
+
+.loading-state,
+.empty-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 100px 20px;
+  text-align: center;
+  background: white;
+  border-radius: 20px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
+  border: 1px solid #e5e7eb;
+}
+
+.loading-icon,
+.empty-icon {
+  font-size: 120px;
+  width: 120px;
+  height: 120px;
+  color: #cbd5e1;
+  margin-bottom: 32px;
+}
+
+.loading-icon {
+  animation: spin 2s linear infinite;
+  background: linear-gradient(135deg, #2563eb 0%, #7c3aed 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.empty-state h2 {
+  margin: 0 0 16px 0;
+  color: #1e293b;
+  font-size: 28px;
+  font-weight: 700;
+}
+
+.empty-state p {
+  margin: 0 0 36px 0;
+  color: #64748b;
+  font-size: 17px;
+  max-width: 480px;
+  line-height: 1.6;
+}
+
+.tasks-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+  gap: 28px;
+}
+
+.task-card {
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  border-radius: 18px !important;
+  border: 1px solid #e5e7eb !important;
+  background: white;
+  overflow: hidden;
+}
+
+.task-card:hover {
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.12) !important;
+  transform: translateY(-6px);
+  border-color: #cbd5e1 !important;
+}
+
+.task-avatar {
+  background: linear-gradient(135deg, #eff6ff 0%, #f3e8ff 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 56px;
+  height: 56px;
+  border-radius: 16px;
+  box-shadow: 0 4px 12px rgba(37, 99, 235, 0.15);
+}
+
+.task-avatar mat-icon {
+  background: linear-gradient(135deg, #2563eb 0%, #7c3aed 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  font-size: 36px;
+  width: 36px;
+  height: 36px;
+}
+
+.task-card mat-card-title {
+  font-size: 20px;
+  font-weight: 700;
+  color: #1e293b;
+  margin-bottom: 8px;
+}
+
+.task-card mat-card-subtitle {
+  font-size: 15px;
+  color: #64748b;
+  line-height: 1.5;
+}
+
+.task-info {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-top: 16px;
+  padding: 16px;
+  background: #f8fafc;
+  border-radius: 12px;
+}
+
+.info-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 14px;
+  color: #475569;
+  font-weight: 500;
+}
+
+.info-item mat-icon {
+  font-size: 20px;
+  width: 20px;
+  height: 20px;
+  color: #94a3b8;
+}
+
+/* Priority status badges */
+.priority-low {
+  color: #10b981;
+  background: #ecfdf5;
+  padding: 4px 12px;
+  border-radius: 20px;
+}
+
+.priority-normal {
+  color: #f59e0b;
+  background: #fffbeb;
+  padding: 4px 12px;
+  border-radius: 20px;
+}
+
+.priority-high {
+  color: #ef4444;
+  background: #fef2f2;
+  padding: 4px 12px;
+  border-radius: 20px;
+}
+
+/* Status badges */
+.status-todo {
+  color: #64748b;
+  background: #f1f5f9;
+  padding: 4px 12px;
+  border-radius: 20px;
+}
+
+.status-in_progress {
+  color: #2563eb;
+  background: #eff6ff;
+  padding: 4px 12px;
+  border-radius: 20px;
+}
+
+.status-done {
+  color: #10b981;
+  background: #ecfdf5;
+  padding: 4px 12px;
+  border-radius: 20px;
+}
+
+mat-card-actions {
+  padding: 16px 24px !important;
+  border-top: 1px solid #f1f5f9;
+  display: flex;
+  gap: 8px;
+  background: white;
+}
+
+mat-card-actions button {
+  font-weight: 600;
+}
+

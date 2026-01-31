@@ -1,0 +1,154 @@
+.dialog-container {
+  background: #ffffff;
+  border-radius: 16px;
+  padding: 0;
+  min-width: 520px;
+  max-width: 90vw;
+  box-shadow: 0 24px 48px rgba(0, 0, 0, 0.15),
+              0 12px 24px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+}
+
+.dialog-header {
+  background: linear-gradient(135deg, #0078d2 0%, #005a9e 100%);
+  padding: 32px 24px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.dialog-header::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  right: -20%;
+  width: 300px;
+  height: 300px;
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.1) 0%, transparent 70%);
+  border-radius: 50%;
+  animation: pulse 3s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0%, 100% {
+    transform: scale(1);
+    opacity: 0.5;
+  }
+  50% {
+    transform: scale(1.1);
+    opacity: 0.8;
+  }
+}
+
+.header-icon {
+  width: 64px;
+  height: 64px;
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 16px;
+  backdrop-filter: blur(10px);
+  border: 2px solid rgba(255, 255, 255, 0.3);
+}
+
+.header-icon mat-icon {
+  font-size: 32px;
+  width: 32px;
+  height: 32px;
+  color: #ffffff;
+}
+
+.dialog-header h2 {
+  margin: 0;
+  color: #ffffff;
+  font-size: 24px;
+  font-weight: 600;
+  letter-spacing: -0.5px;
+  text-align: center;
+}
+
+.dialog-subtitle {
+  margin: 8px 0 0;
+  color: rgba(255, 255, 255, 0.9);
+  font-size: 14px;
+  font-weight: 400;
+  text-align: center;
+}
+
+.dialog-content {
+  padding: 40px 32px;
+  background: #ffffff;
+  min-height: 120px;
+}
+
+.full-width {
+  width: 100%;
+}
+
+.option-content {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.option-content mat-icon {
+  color: #0078d2;
+  font-size: 20px;
+  width: 20px;
+  height: 20px;
+}
+
+.dialog-actions {
+  padding: 20px 32px 28px;
+  background: #fafbfc;
+  border-top: 1px solid #e1e4e8;
+  display: flex;
+  gap: 12px;
+  justify-content: flex-end;
+}
+
+.cancel-btn {
+  color: #586069;
+  font-weight: 500;
+  transition: all 0.2s ease;
+}
+
+.cancel-btn:hover {
+  background: #f3f4f6;
+  color: #24292e;
+}
+
+.confirm-btn {
+  font-weight: 500;
+  box-shadow: 0 2px 8px rgba(0, 120, 210, 0.3);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  transition: all 0.2s ease;
+  min-width: 140px;
+  justify-content: center;
+}
+
+.confirm-btn ng-container {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.confirm-btn:hover:not(:disabled) {
+  box-shadow: 0 4px 12px rgba(0, 120, 210, 0.4);
+  transform: translateY(-1px);
+}
+
+.confirm-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.confirm-btn mat-icon {
+  font-size: 18px;
+  width: 18px;
+  height: 18px;
+}

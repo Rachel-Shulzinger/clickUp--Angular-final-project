@@ -1,0 +1,65 @@
+﻿<div class="auth-page">
+  <div class="auth-container">
+    <div class="auth-card">
+      <div class="auth-header">
+        <app-logo [size]="'large'" [showText]="true"></app-logo>
+        <p class="auth-description">Sign in to manage your projects efficiently</p>
+      </div>
+
+      @if (authStore.authError()) {
+        <div class="error-alert">
+          <mat-icon>error_outline</mat-icon>
+          <span>{{ authStore.authError() }}</span>
+          <button mat-icon-button (click)="authService.clearError()" class="close-btn">
+            <mat-icon>close</mat-icon>
+          </button>
+        </div>
+      }
+
+      <form [formGroup]="userForm" (ngSubmit)="onSubmit()" class="auth-form">
+        <mat-form-field appearance="outline" class="full-width">
+          <mat-label>Email Address</mat-label>
+          <input matInput formControlName="email" type="email" placeholder="you@company.com" autocomplete="email" />
+          <mat-icon matPrefix>mail_outline</mat-icon>
+          @if (userForm.get('email')?.invalid && userForm.get('email')?.touched) {
+            <mat-error>Please enter a valid email</mat-error>
+          }
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" class="full-width">
+          <mat-label>Password</mat-label>
+          <input matInput formControlName="password" type="password" placeholder="Enter your password" autocomplete="current-password" />
+          <mat-icon matPrefix>lock_outline</mat-icon>
+          @if (userForm.get('password')?.invalid && userForm.get('password')?.touched) {
+            <mat-error>Password is required</mat-error>
+          }
+        </mat-form-field>
+
+        <button mat-raised-button color="primary" type="submit" class="auth-btn" [disabled]="userForm.invalid || authStore.authLoading()">
+          @if (authStore.authLoading()) {
+            <mat-spinner diameter="20" class="btn-spinner"></mat-spinner>
+            <span>Signing in...</span>
+          } @else {
+            <ng-container>
+              <span>Sign In</span>
+              <mat-icon>arrow_forward</mat-icon>
+            </ng-container>
+          }
+        </button>
+      </form>
+
+      <div class="auth-footer">
+        <div class="divider">
+          <span>or</span>
+        </div>
+        <p>Don't have an account? <a routerLink="/register" class="auth-link">Create account</a></p>
+      </div>
+    </div>
+  </div>
+
+  <div class="auth-background">
+    <div class="gradient-orb orb-1"></div>
+    <div class="gradient-orb orb-2"></div>
+    <div class="gradient-orb orb-3"></div>
+  </div>
+</div>

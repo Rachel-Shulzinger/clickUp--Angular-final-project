@@ -1,0 +1,356 @@
+/* ClickUp - Modern Professional Global Styles */
+
+:root {
+  /* Primary Colors - Modern Blue & Purple Gradient */
+  --primary-color: #2563eb;
+  --primary-light: #60a5fa;
+  --primary-dark: #1e40af;
+  --secondary-color: #7c3aed;
+  --accent-color: #ec4899;
+  
+  /* Background Colors - Light & Clean */
+  --bg-main: #fafbfc;
+  --bg-card: #ffffff;
+  --bg-hover: #f1f5f9;
+  --bg-gradient: linear-gradient(135deg, #fafbfc 0%, #ffffff 100%);
+  
+  /* Text Colors */
+  --text-primary: #1e293b;
+  --text-secondary: #64748b;
+  --text-tertiary: #94a3b8;
+  --text-white: #ffffff;
+  
+  /* Border & Shadow */
+  --border-color: #e5e7eb;
+  --border-radius: 12px;
+  --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.05);
+  --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.08);
+  --shadow-lg: 0 10px 40px rgba(0, 0, 0, 0.1);
+  
+  /* Sidebar */
+  --sidebar-bg: linear-gradient(180deg, #ffffff 0%, #f8f9fa 100%);
+  --sidebar-hover: #f1f5f9;
+  --sidebar-active: linear-gradient(135deg, #2563eb 0%, #7c3aed 100%);
+  
+  /* Success, Warning, Error */
+  --success-color: #10b981;
+  --warning-color: #f59e0b;
+  --error-color: #ef4444;
+}
+
+/* Dark Mode Theme */
+body.dark-mode {
+  --bg-main: #0f172a;
+  --bg-card: #1e293b;
+  --bg-hover: #334155;
+  --bg-gradient: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+  --text-primary: #f1f5f9;
+  --text-secondary: #cbd5e1;
+  --text-tertiary: #94a3b8;
+  --border-color: #334155;
+  --sidebar-bg: linear-gradient(180deg, #1e293b 0%, #0f172a 100%);
+  --sidebar-hover: #334155;
+}
+
+/* Compact Mode */
+body.compact-mode {
+  --spacing: 0.5rem;
+  --card-padding: 1rem;
+}
+
+body:not(.compact-mode) {
+  --spacing: 1rem;
+  --card-padding: 1.5rem;
+}
+
+/* Disable Animations */
+body.no-animations * {
+  animation: none !important;
+  transition: none !important;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  margin: 0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  overflow-x: hidden;
+  background: var(--bg-gradient);
+  color: var(--text-primary);
+  transition: background-color 0.3s ease, color 0.3s ease;
+  line-height: 1.6;
+}
+
+/* Global Card Styling */
+.mat-mdc-card {
+  background-color: var(--bg-card) !important;
+  color: var(--text-primary) !important;
+  border-radius: var(--border-radius) !important;
+  box-shadow: var(--shadow-sm) !important;
+  border: 1px solid var(--border-color) !important;
+  transition: all 0.3s ease !important;
+}
+
+.mat-mdc-card:hover {
+  box-shadow: var(--shadow-md) !important;
+  transform: translateY(-2px);
+}
+
+/* Global Button Styling */
+.mat-mdc-raised-button,
+.mat-mdc-unelevated-button {
+  border-radius: 10px !important;
+  font-weight: 600 !important;
+  text-transform: none !important;
+  padding: 10px 24px !important;
+  transition: all 0.2s ease !important;
+}
+
+.mat-mdc-raised-button.mat-primary,
+.mat-mdc-unelevated-button.mat-primary,
+.mat-mdc-fab.mat-primary {
+  background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%) !important;
+  box-shadow: 0 4px 12px rgba(37, 99, 235, 0.25) !important;
+}
+
+.mat-mdc-raised-button.mat-primary:hover,
+.mat-mdc-unelevated-button.mat-primary:hover {
+  box-shadow: 0 6px 20px rgba(37, 99, 235, 0.35) !important;
+  transform: translateY(-1px);
+}
+
+.mat-mdc-button {
+  border-radius: 10px !important;
+  font-weight: 600 !important;
+  text-transform: none !important;
+}
+
+.mat-mdc-stroked-button {
+  border-radius: 10px !important;
+  font-weight: 600 !important;
+  border: 2px solid var(--border-color) !important;
+  text-transform: none !important;
+}
+
+/* Modern Clean Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 10px;
+  border: 2px solid transparent;
+  background-clip: padding-box;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #94a3b8;
+  background-clip: padding-box;
+}
+
+body.dark-mode ::-webkit-scrollbar-thumb {
+  background: #475569;
+}
+
+body.dark-mode ::-webkit-scrollbar-thumb:hover {
+  background: #64748b;
+}
+
+/* Modern Button Styles */
+.taskflow-btn {
+  padding: 10px 20px;
+  border-radius: 8px;
+  border: none;
+  font-weight: 500;
+  font-size: 14px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  font-family: inherit;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.taskflow-btn-primary {
+  background-color: var(--taskflow-primary);
+  color: white;
+  box-shadow: var(--taskflow-shadow);
+}
+
+.taskflow-btn-primary:hover:not(:disabled) {
+  background-color: var(--taskflow-primary-dark);
+  box-shadow: var(--taskflow-shadow-md);
+  transform: translateY(-1px);
+}
+
+.taskflow-btn-secondary {
+  background-color: white;
+  color: var(--taskflow-text-primary);
+  border: 1px solid var(--taskflow-border);
+  box-shadow: var(--taskflow-shadow-sm);
+}
+
+.taskflow-btn-secondary:hover:not(:disabled) {
+  background-color: var(--taskflow-bg-hover);
+  border-color: var(--taskflow-primary-light);
+}
+
+.taskflow-btn-ghost {
+  background-color: transparent;
+  color: var(--taskflow-text-secondary);
+}
+
+.taskflow-btn-ghost:hover:not(:disabled) {
+  background-color: var(--taskflow-bg-hover);
+  color: var(--taskflow-text-primary);
+}
+
+.taskflow-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* Modern Card Styles */
+.taskflow-card {
+  background: white;
+  border-radius: 12px;
+  padding: 20px;
+  box-shadow: var(--taskflow-shadow);
+  border: 1px solid var(--taskflow-border-light);
+  transition: all 0.2s ease;
+}
+
+.taskflow-card:hover {
+  box-shadow: var(--taskflow-shadow-md);
+  border-color: var(--taskflow-border);
+}
+
+/* Modern Input Styles */
+.taskflow-input {
+  width: 100%;
+  padding: 12px 16px;
+  border: 1px solid var(--taskflow-border);
+  border-radius: 8px;
+  font-size: 14px;
+  font-family: inherit;
+  transition: all 0.2s ease;
+  background: white;
+}
+
+.taskflow-input:focus {
+  outline: none;
+  border-color: var(--taskflow-primary);
+  box-shadow: 0 0 0 3px var(--taskflow-primary-lighter);
+}
+
+.taskflow-input::placeholder {
+  color: var(--taskflow-text-tertiary);
+}
+
+/* Typography */
+h1, h2, h3, h4, h5, h6 {
+  margin: 0;
+  color: var(--taskflow-text-primary);
+  font-weight: 600;
+}
+
+h1 { font-size: 32px; line-height: 1.2; }
+h2 { font-size: 24px; line-height: 1.3; }
+h3 { font-size: 20px; line-height: 1.4; }
+h4 { font-size: 18px; line-height: 1.4; }
+
+p {
+  margin: 0;
+  color: var(--taskflow-text-primary);
+}
+
+/* Utility Classes */
+.text-secondary {
+  color: var(--taskflow-text-secondary);
+}
+
+.text-tertiary {
+  color: var(--taskflow-text-tertiary);
+}
+
+.text-primary-color {
+  color: var(--taskflow-primary);
+}
+
+.text-success {
+  color: var(--taskflow-success);
+}
+
+.text-error {
+  color: var(--taskflow-error);
+}
+
+/* Material Overrides for Clean Look */
+.mat-mdc-raised-button.mat-primary {
+  --mdc-protected-button-container-color: var(--taskflow-primary);
+  box-shadow: var(--taskflow-shadow) !important;
+}
+
+.mat-mdc-raised-button.mat-primary:hover {
+  box-shadow: var(--taskflow-shadow-md) !important;
+}
+
+.mat-mdc-button.mat-primary {
+  --mdc-text-button-label-text-color: var(--taskflow-primary);
+}
+
+.mat-mdc-outlined-button {
+  border-radius: 8px !important;
+}
+
+.mat-mdc-card {
+  box-shadow: var(--taskflow-shadow) !important;
+  border: 1px solid var(--taskflow-border-light) !important;
+}
+
+/* Dialog/Modal Backdrop - רקע מטושטש */
+.cdk-overlay-dark-backdrop {
+  background: rgba(0, 0, 0, 0.6) !important;
+  backdrop-filter: blur(8px);
+}
+
+.cdk-overlay-backdrop {
+  background: rgba(0, 0, 0, 0.6) !important;
+  backdrop-filter: blur(8px);
+}
+
+/* Dialog Panel - מלבן לבן ברור ללא טשטוש */
+.mat-mdc-dialog-container .mdc-dialog__surface {
+  background: #ffffff !important;
+  box-shadow: 0 24px 48px rgba(0, 0, 0, 0.2), 
+              0 12px 24px rgba(0, 0, 0, 0.15) !important;
+  border-radius: 8px !important;
+}
+
+.mat-mdc-dialog-panel {
+  background: transparent !important;
+  box-shadow: none !important;
+}
+
+/* Select dropdown בפופאפ - רקע לבן */
+.mat-mdc-select-panel {
+  background: #ffffff !important;
+}
+
+.mat-mdc-option {
+  background: #ffffff !important;
+}
+
+.mat-mdc-option:hover {
+  background: #f3f4f6 !important;
+}

@@ -1,0 +1,220 @@
+<!-- ClickUp Home - Scale Work Management -->
+<div class="home-wrapper">
+  
+  <!-- Navigation Bar -->
+  <mat-toolbar class="home-toolbar">
+    <div class="toolbar-content">
+      <div class="logo-section">
+        <mat-icon class="logo-icon">rocket_launch</mat-icon>
+        <span class="logo-text">ClickUp</span>
+      </div>
+      
+      <span class="toolbar-spacer"></span>
+      
+      <div class="nav-links">
+        <a mat-button routerLink="/">Product</a>
+        <a mat-button routerLink="/">Solutions</a>
+        <a mat-button routerLink="/">Enterprise</a>
+        <a mat-button routerLink="/">Pricing</a>
+      </div>
+
+      <div class="auth-buttons">
+        @if (authStore.isAuthenticated()) {
+          <button mat-stroked-button color="primary" routerLink="/dashboard" class="dashboard-btn">
+            <mat-icon>dashboard</mat-icon>
+            Dashboard
+          </button>
+        } @else {
+          <button mat-button routerLink="/login" class="login-btn">Log In</button>
+          <button mat-flat-button color="primary" routerLink="/register" class="signup-btn">
+            Sign Up
+          </button>
+        }
+      </div>
+    </div>
+  </mat-toolbar>
+  
+  <!-- Modern Hero Section -->
+  <section class="hero-section">
+    <div class="hero-container">
+      <div class="hero-text-content">
+        <div class="pill-badge">
+          <span class="new-tag">NEW</span>
+          <span class="tag-text">AI 2.0 is now live</span>
+          <mat-icon>arrow_forward</mat-icon>
+        </div>
+        
+        <h1 class="hero-title">
+          The everything app for
+          <span class="highlight-text">work.</span>
+        </h1>
+        
+        <p class="hero-subtitle">
+          One platform to streamline your projects, tasks, chats, and goals. 
+          Replace them all with ClickUp and save one day every week.
+        </p>
+        
+        <div class="hero-actions">
+          @if (authStore.isAuthenticated()) {
+            <button mat-flat-button color="primary" routerLink="/dashboard" class="hero-cta-primary">
+              Go to Dashboard
+            </button>
+          } @else {
+            <button mat-flat-button color="primary" routerLink="/register" class="hero-cta-primary">
+              Get Started For Free
+            </button>
+          }
+          <button mat-stroked-button class="hero-cta-secondary">
+            <mat-icon>play_circle_outline</mat-icon>
+            Watch Demo
+          </button>
+        </div>
+
+        <div class="trust-badges">
+          <span>TRUSTED BY 800,000+ TEAMS</span>
+          <div class="logos-grid">
+            <!-- Simulated Logos for design feel -->
+            <span class="logo-placeholder">Netflix</span>
+            <span class="logo-placeholder">Spotify</span>
+            <span class="logo-placeholder">Google</span>
+            <span class="logo-placeholder">Airbnb</span>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Abstract UI Presentation -->
+      <div class="hero-ui-visual">
+        <div class="glass-card main-dashboard">
+          <div class="card-header">
+            <div class="dot red"></div>
+            <div class="dot yellow"></div>
+            <div class="dot green"></div>
+          </div>
+          <div class="dashboard-preview">
+            <div class="sidebar-mock"></div>
+            <div class="content-mock">
+              <div class="header-line"></div>
+              <div class="task-row">
+                <mat-icon class="status-icon done">check_circle</mat-icon>
+                <div class="task-line long"></div>
+              </div>
+              <div class="task-row">
+                <mat-icon class="status-icon in-progress">timelapse</mat-icon>
+                <div class="task-line medium"></div>
+                <div class="avatar-group">
+                  <div class="mock-avatar"></div>
+                  <div class="mock-avatar"></div>
+                </div>
+              </div>
+              <div class="task-row">
+                <mat-icon class="status-icon todo">radio_button_unchecked</mat-icon>
+                <div class="task-line short"></div>
+              </div>
+              
+              <!-- Floating Elements -->
+              <div class="float-stat stat-1">
+                <mat-icon>trending_up</mat-icon>
+                <span>+142% Efficiency</span>
+              </div>
+              
+              <div class="float-stat stat-2">
+                <mat-icon>security</mat-icon>
+                <span>SOC 2 Type II</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Curve Separator -->
+  <div class="curve-separator">
+    <svg viewBox="0 0 1440 120" preserveAspectRatio="none">
+        <path d="M0,0 C240,100 480,120 720,60 C960,0 1200,20 1440,80 L1440,120 L0,120 Z" fill="#ffffff"></path>
+    </svg>
+  </div>
+
+  <!-- Features Grid -->
+  <section class="features-section-modern">
+    <div class="section-container">
+      <div class="section-header-center">
+        <span class="overline">POWERFUL FEATURES</span>
+        <h2>Everything you need to build faster</h2>
+        <div class="underline-gradient"></div>
+      </div>
+      
+      <div class="bento-grid">
+        @for (feature of features(); track feature.icon) {
+          <div class="bento-card">
+            <div class="card-icon" [style.background]="feature.color + '20'">
+              <mat-icon [style.color]="feature.color">{{ feature.icon }}</mat-icon>
+            </div>
+            <h3>{{ feature.title }}</h3>
+            <p>{{ feature.description }}</p>
+          </div>
+        }
+      </div>
+    </div>
+  </section>
+
+  <!-- Stats Strip -->
+  <section class="stats-strip">
+    <div class="stats-container">
+      @for (stat of stats(); track stat.label) {
+        <div class="stat-block">
+          <div class="stat-value">{{ stat.value }}</div>
+          <div class="stat-label">{{ stat.label }}</div>
+        </div>
+      }
+    </div>
+  </section>
+
+  <!-- Dark Footer -->
+  <footer class="app-footer">
+    <div class="footer-content">
+      <div class="footer-brand">
+        <div class="footer-logo">
+          <mat-icon>rocket_launch</mat-icon>
+          <span>ClickUp</span>
+        </div>
+        <p>The future of work is here. Join millions of users who are saving one day every week.</p>
+        <div class="social-links">
+          <mat-icon>public</mat-icon>
+          <mat-icon>share</mat-icon>
+          <mat-icon>mail</mat-icon>
+        </div>
+      </div>
+      
+      <div class="footer-links">
+        <div class="link-column">
+          <h4>Product</h4>
+          <a href="#">Tasks</a>
+          <a href="#">Docs</a>
+          <a href="#">Goals</a>
+          <a href="#">Whiteboards</a>
+        </div>
+        <div class="link-column">
+          <h4>Resources</h4>
+          <a href="#">Blog</a>
+          <a href="#">Community</a>
+          <a href="#">Help Center</a>
+          <a href="#">Partners</a>
+        </div>
+        <div class="link-column">
+          <h4>Company</h4>
+          <a href="#">About Us</a>
+          <a href="#">Careers</a>
+          <a href="#">Legal</a>
+          <a href="#">Contact</a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2026 ClickUp. All rights reserved.</p>
+    </div>
+  </footer>
+
+</div>
+
+

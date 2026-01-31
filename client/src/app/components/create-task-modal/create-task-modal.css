@@ -1,0 +1,30 @@
+mat-dialog-content {
+  padding: 20px;
+  min-width: 400px;
+}
+
+.full-width {
+  width: 100%;
+  margin-bottom: 16px;
+}
+
+h2[mat-dialog-title] {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: #1976d2;
+}
+
+mat-dialog-actions {
+  padding: 16px 24px;
+  gap: 8px;
+}
+
+mat-form-field {
+  display: block;
+}
+
+textarea {
+  resize: vertical;
+  min-height: 80px;
+}
